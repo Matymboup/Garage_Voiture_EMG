@@ -1,0 +1,42 @@
+﻿@page
+@model Garage_Voiture.Areas.Marques.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+  
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<h1>Voir les détails</h1>
+
+<div>
+   
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Marque.Nom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Marque.Nom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Marque.description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Marque.description)
+        </dd>
+    </dl>
+</div>
+<div>
+     @if (SignInManager.IsSignedIn(User))
+       {
+    <a class="btn btn-success" asp-page="./Edit" asp-route-id="@Model.Marque.Id">Modifier</a> 
+        <a class="btn btn-primary" asp-page="./Index">Revenir à la liste</a>
+    }
+    else
+    {
+        <a class="btn btn-primary" asp-page="./Index">Revenir à la liste</a>
+    }
+</div>

@@ -1,0 +1,125 @@
+﻿@page
+@model Garage_Voiture.Areas.Voiture.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<h1>Liste des Voitures</h1>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a class="btn btn-success" asp-page="Create">Nouvelle Voiture</a>
+    </p>
+  
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].VIN)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.Voiture[0].Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].Année)
+            </th>
+            <th>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].Marque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].Modele)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].DateAchat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].PrixAchat)
+            </th>
+          @*   <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].Disponible)
+            </th>  *@
+            <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].Status)
+            </th>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].PrixVente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voiture[0].DateVente)
+            </th> *@
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Voiture) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VIN)
+            </td>
+                <td>
+                @if (item.Image != null)
+                {
+                    <img src="@Url.Content(item.Image.Path)" class="card-img-top" alt="Car Image" height="80"; width="80";>
+                }
+                </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Année)
+            </td>
+            <td>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marque.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modele.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAchat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrixAchat)
+            </td>
+         @*    <td>
+                @Html.DisplayFor(modelItem => item.Disponible)
+            </td> *@
+          @*   <td>
+                @Html.DisplayFor(modelItem => item.PrixVente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateVente)
+            </td> *@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                @if (SignInManager.IsSignedIn(User))
+                {
+
+
+                        <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
+                        <a class="btn btn-dark" asp-page="./Details" asp-route-id="@item.Id">Voir</a>
+                        <a class ="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+
+                    else
+                    {
+                        <a class="btn btn-dark" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                                        
+                     }
+
+                </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

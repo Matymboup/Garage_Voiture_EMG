@@ -1,0 +1,36 @@
+﻿@page
+@model Garage_Voiture.Areas.Marques.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+  
+}
+
+<h1>Delete</h1>
+
+<h3>Voulez-vous vraiment supprimer cette marque?</h3>
+<div>
+    <h4>Marque</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Marque.Nom)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Marque.Nom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Marque.description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Marque.description)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Marque.Id" />
+        <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+        <a class="btn btn-primary" asp-page="./Index">Revenir à la liste</a>
+     
+    </form>
+</div>

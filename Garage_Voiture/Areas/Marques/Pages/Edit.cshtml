@@ -1,0 +1,40 @@
+﻿@page
+@model Garage_Voiture.Areas.Marques.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+  
+}
+
+<h1>Modifier les informations </h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Marque.Id" />
+            <div class="form-group">
+                <label asp-for="Marque.Nom" class="control-label"></label>
+                <input asp-for="Marque.Nom" class="form-control" />
+                <span asp-validation-for="Marque.Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Marque.description" class="control-label"></label>
+                <input asp-for="Marque.description" class="form-control" />
+                <span asp-validation-for="Marque.description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sauvegarder" class="btn btn-success" />
+                <a class="btn btn-primary" asp-page="./Index">Annuler la modification</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,85 @@
+﻿@page
+@model Garage_Voiture.Areas.Voiture.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<h1>Voir les détails</h1>
+
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.VIN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.VIN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.Année)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.Année)
+        </dd>
+       
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.Marque)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.Marque.Nom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.Modele)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.Modele.Nom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.DateAchat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.DateAchat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.PrixAchat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.PrixAchat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.Disponible)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.Disponible)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.PrixVente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.PrixVente)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.DateVente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.DateVente)
+        </dd>
+    </dl>
+
+</div>
+<div>
+     @if (SignInManager.IsSignedIn(User))
+    {
+        <a class="btn btn-success" asp-page="./Edit" asp-route-id="@Model.Voiture.Id">Modifier</a>
+        <a class="btn btn-primary" asp-page="./Index">Revenir à la liste</a>
+    }
+    else
+    {
+        <a class="btn btn-primary" asp-page="./Index">Revenir à la liste</a>
+    }
+    
+</div>

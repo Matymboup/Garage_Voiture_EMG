@@ -1,0 +1,38 @@
+﻿@page
+@model Garage_Voiture.Areas.Reparations.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details de la Réparation</h1>
+
+<div>
+   
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.CoutReparation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.CoutReparation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.Voiture)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.Voiture.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-success"asp-page="./Edit" asp-route-id="@Model.Repair.Id">Modifier</a> |
+    <a class="btn btn-primary"  asp-page="./Index">Revenir à la liste</a>
+</div>

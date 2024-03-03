@@ -1,0 +1,49 @@
+﻿@page
+@model Garage_Voiture.Areas.Reparations.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Liste des Réparations faites </h1>
+
+<p>
+    <a class="btn btn-success"asp-page="Create">Renseigner une réparation</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Repair[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Repair[0].CoutReparation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Repair[0].Voiture)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Repair) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoutReparation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voiture.VIN)
+            </td>
+            <td>
+                <a class="btn btn-primary"asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                 <a class="btn btn-dark"  asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn btn-danger"  asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

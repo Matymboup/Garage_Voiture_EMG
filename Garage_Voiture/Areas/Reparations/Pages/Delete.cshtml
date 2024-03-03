@@ -1,0 +1,41 @@
+﻿@page
+@model Garage_Voiture.Areas.Reparations.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Voulez-vous vraiment supprimer la réparation?</h3>
+<div>
+  
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.CoutReparation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.CoutReparation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Repair.Voiture)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Repair.Voiture.Id)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Repair.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a class="btn btn-primary" asp-page="./Index">Revenir à la liste</a>
+    </form>
+</div>

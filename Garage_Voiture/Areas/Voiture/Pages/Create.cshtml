@@ -1,0 +1,30 @@
+﻿@page
+@model Garage_Voiture.Areas.Voiture.Pages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Sauvegarder une voiture</h1>
+
+
+<hr />
+
+<ddiv class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <partial name="~/Pages/Shared/Temp/Voitures.cshtml" model="@Model.Voiture" />
+            <div class="form-group mt-2">
+                <input type="submit" value="Créer" class="btn btn-primary" />
+                <a class="btn btn-success" asp-page="Index">Retour à la liste</a>
+            </div>
+        </form>
+    </div>
+    </div>
+
+
+    <script>
+        // Récupérer le message côté serveur et l'afficher dans la console du navigateur
+        var messageFromServer = @Html.Raw(Json.Serialize(ViewData["Message"]));
+        console.log(messageFromServer);
+    </script>

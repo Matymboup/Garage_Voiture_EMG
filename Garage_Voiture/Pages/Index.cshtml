@@ -1,0 +1,46 @@
+﻿@page
+@model Garage_Voiture.Areas.Voiture.Pages.IndexModel
+@{
+    ViewData["Title"] = "Page d'Accueil";
+}
+
+<div class="container text-center mt-5">
+    <h1 class="display-4">Bienvenue chez EMG Universal Auto</h1>
+    <p>Découvrez notre espace de vente de voitures d'occasion de qualité.</p>
+
+    <img src="~/IMG_3870.jpg" alt="Image de voiture" class="img-fluid mt-4">
+
+ 
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <h2>Explorez notre inventaire</h2>
+            <p>Découvrez notre large gamme de voitures disponibles.</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Nouvelle Arrivage</h2>
+            <p>Faites vous plaisir avec de nouvelles voitures.</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Qualités && Services </h2>
+            <p>Découvrer notre services de qualités aprés Ventes .</p>
+        </div>
+    </div>
+
+    
+    <div class="row mt-5">
+        @foreach (var item in Model.Voiture)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <a asp-area="Voiture"  asp-page="./Details" asp-route-id="@item.Id">
+                    <img src="@Url.Content(item.Image?.Path)" class="card-img-top" alt="Image de voiture"> </a>
+                    <div class="card-body">
+                        <p class="card-text">@item.Marque?.Nom</p>
+                        <p class="card-text"> Prix: @item.PrixVente Fcfa</p>
+                       
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

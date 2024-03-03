@@ -1,0 +1,57 @@
+﻿@page
+@model Garage_Voiture.Areas.Modeles.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<h1>Liste des Modèles</h1>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a class="btn btn-success" asp-page="Create">Nouvelles Modèle</a>
+    </p>
+
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Modele[0].Nom)
+            </th> <th>
+                @Html.DisplayNameFor(model => model.Modele[0].Description)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Modele) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td> 
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a class="btn btn-success" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                       <a class="btn btn-dark"asp-page="./Details" asp-route-id="@item.Id">Details</a> 
+                        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-dark" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                    }
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,83 @@
+﻿@page
+@model Garage_Voiture.Areas.Voiture.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+
+<h3>Voulez-vous vraiment supprimer cette voiture?</h3>
+<div>
+ 
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.VIN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.VIN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.Année)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.Année)
+        </dd>
+       
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.Marque)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.Marque.Nom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.Modele)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.Modele.Nom)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.DateAchat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.DateAchat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.PrixAchat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.PrixAchat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.Disponible)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.Disponible)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.Status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.PrixVente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.PrixVente)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Voiture.DateVente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Voiture.DateVente)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Voiture.Id" />
+        <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+        <a class="btn btn-primary" asp-page="./Index">Revenir à la liste</a>
+    </form>
+</div>
